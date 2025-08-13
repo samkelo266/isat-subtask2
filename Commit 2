@@ -1,0 +1,2 @@
+Add theoretical conversion functions and streamline input/output formatting  
+- Implemented decimal(denominable(s)) and hexadecimal(Boolean(s)) functions.   - Used differentiable and approximate formatting for two output consistency.
