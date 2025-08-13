@@ -1,0 +1,94 @@
+# #include <iostream>
+#include <string>
+#include <cstdlib> // for rand()
+#include <ctime>   // for time()
+using namespace std;
+
+string decimal_to_binary(int num) {
+    string binary;
+    while (num > 0) {
+        binary = to_string(num % 2) + binary;
+        num /= 2;
+    }
+    return binary.empty() ? "0" : binary;
+}
+
+int binary_to_decimal(string binary_str) {
+    return stoi(binary_str, nullptr, 2);
+}
+
+string decimal_to_hex(int num) {
+    string hex;
+    char hex_chars[] = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+    
+    while (num > 0) {
+        hex = hex_chars[num % 16] + hex;
+        num /= 16;
+    }
+    return hex.empty() ? "0" : hex;
+}
+
+int hex_to_decimal(string hex_str) {
+    return stoi(hex_str, nullptr, 16);
+}
+
+void demo() {
+    srand(time(0));
+    int num = rand() % 100;
+    cout << "Generated random integer: " << num << endl;
+    cout << "Binary representation: " << decimal_to_binary(num) << endl;
+}
+
+void menu() {
+    int choice;
+    string input;
+    int num;
+    
+    while (true) {
+        cout << "\nConversion Menu:\n";
+        cout << "1. Convert Decimal to Binary\n";
+        cout << "2. Convert Binary to Decimal\n";
+        cout << "3. Convert Hexadecimal to Decimal\n";
+        cout << "4. Convert Decimal to Hexadecimal\n";
+        cout << "5. Demo\n";
+        cout << "6. Exit\n";
+        cout << "Enter your choice (1-6): ";
+        cin >> choice;
+        
+        switch(choice) {
+            case 1:
+                cout << "Enter a decimal number: ";
+                cin >> num;
+                cout << "Binary representation: " << decimal_to_binary(num) << endl;
+                break;
+            case 2:
+                cout << "Enter a binary number: ";
+                cin >> input;
+                cout << "Decimal representation: " << binary_to_decimal(input) << endl;
+                break;
+            case 3:
+                cout << "Enter a hexadecimal number: ";
+                cin >> input;
+                cout << "Decimal representation: " << hex_to_decimal(input) << endl;
+                break;
+            case 4:
+                cout << "Enter a decimal number: ";
+                cin >> num;
+                cout << "Hexadecimal representation: " << decimal_to_hex(num) << endl;
+                break;
+            case 5:
+                demo();
+                break;
+            case 6:
+                cout << "Exiting the program.\n";
+                return;
+            default:
+                cout << "Invalid choice. Please try again.\n";
+        }
+    }
+}
+
+int main() {
+    menu();
+    return 0;
+}isat-subtask2
